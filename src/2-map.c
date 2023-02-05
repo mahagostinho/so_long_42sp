@@ -6,13 +6,28 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:01 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 23:01:04 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:27:07 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-//void	check_map(t_game *game);
+void	check_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	if (game->map.total_lines < 3)
+		map_error("Small map! Need more lines", game);
+	if (game->map.total_columns < 4)
+		map_error("Small map! Need more columns", game);
+	while (game->map.map_grid[i])
+	{
+		check_map_line(game->map.map_grid[i], game, i);
+		i++;
+	}
+	check_map_characters(game);
+}
 
 void	read_map(char *map_file, t_game *game)
 {
@@ -31,14 +46,14 @@ void	read_map(char *map_file, t_game *game)
 		{
 			game->map.total_lines++;
 			if (game->map.total_lines == 1)
-				game->map.total_columns = ft_strlen(aux);
+				game->map.total_columns = ft_strlen(aux) - 1;
 			gnl_strjoin(&(game->map.map_vector), aux);
 			if (game->map.map_vector == NULL)
 				map_error("Memory allocation error", game);
 		}
 		free_ptr_ptr(&aux);
 	}
-	ft_printf("%s", game->map.map_vector); //apagar depois ************************************
+	ft_printf("%s", game->map.map_vector); //apagar depois ******************
 	free_ptr_ptr(&aux);
 	close(fd);
 }
@@ -66,14 +81,5 @@ void	parse_map(char *map_file, t_game *game)
 	game->map.map_grid = ft_split(game->map.map_vector, '\n');
 	if (game->map.map_grid == NULL)
 		game_error("Error to create map matrix", game);
-	/*
-	ft_printf(game->map.map_grid[0]);
-	free(game->map.map_vector);
-	free(game->map.map_grid[0]);
-	free(game->map.map_grid[1]);
-	free(game->map.map_grid[2]);
-	free(game->map.map_grid[3]);
-	free(game->map.map_grid[4]);
-	*/
-	//check_map(game)
+	check_map(game);
 }

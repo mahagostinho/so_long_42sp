@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:27 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:06:58 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:10:25 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	map_error(char *message, t_game *game)
 	exit(EXIT_FAILURE);
 }
 
-int	game_error(char *message, t_game *game)
+void	game_error(char *message, t_game *game)
 {
 	ft_printf("Error\n%s\n", message);
-	clean_game(game);
+	free_game(game);
 	exit(EXIT_FAILURE);
 }

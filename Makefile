@@ -20,7 +20,7 @@ OBJS_PATH = ./objs
 HEADER = ./headers
 
 # Files
-SRCS_FILES = so_long.c 0-error_functions.c 1-input.c 2-map.c clean.c
+SRCS_FILES = so_long.c 0-error_functions.c 1-input.c 2-map.c 3-check_map.c clean.c
 
 # all files .c with the path
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES)) 
