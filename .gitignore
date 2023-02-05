@@ -1,0 +1,5 @@
+.vscode/
+*.o
+*.a
+so_long
+trash_for_now/
