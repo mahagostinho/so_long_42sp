@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:05 by marcarva         ###   ########.fr       */
+/*   Created: 2022/09/08 20:54:25 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/03 15:19:25 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#include "../headers/libft.h"
 
-# include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-// open
-# include <fcntl.h>
-// events and masks
-# include <X11/X.h>
-# include <X11/keysym.h>
-//se for utilizar strerror()
-# include <string.h>
-//se for usar perror() 
-# include <stdio.h>
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
 
-#endif
+	i = (int)ft_strlen(s);
+	while (i >= 0)
+	{
+		if (*(s + i) == (char)c)
+			return ((char *)(s + i));
+		i--;
+	}
+	return (NULL);
+}

@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:05 by marcarva         ###   ########.fr       */
+/*   Created: 2022/09/24 21:43:51 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/03 15:09:00 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#include "../headers/libft.h"
 
-# include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-// open
-# include <fcntl.h>
-// events and masks
-# include <X11/X.h>
-# include <X11/keysym.h>
-//se for utilizar strerror()
-# include <string.h>
-//se for usar perror() 
-# include <stdio.h>
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new_node;
 
-#endif
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}

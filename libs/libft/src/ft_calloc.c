@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:05 by marcarva         ###   ########.fr       */
+/*   Created: 2022/09/12 14:41:16 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/03 15:05:12 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#include "../headers/libft.h"
 
-# include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-// open
-# include <fcntl.h>
-// events and masks
-# include <X11/X.h>
-# include <X11/keysym.h>
-//se for utilizar strerror()
-# include <string.h>
-//se for usar perror() 
-# include <stdio.h>
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+	size_t	i;
 
-#endif
+	i = 0;
+	if (!nmemb || !size || (nmemb * size) / size != nmemb)
+		return (NULL);
+	ptr = (void *)malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+	while (i < (nmemb * size))
+	{
+		*((char *)ptr + i) = '\0';
+		i++;
+	}
+	return (ptr);
+}

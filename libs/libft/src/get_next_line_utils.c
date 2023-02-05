@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:05 by marcarva         ###   ########.fr       */
+/*   Created: 2022/10/18 11:07:33 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/04 19:17:17 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#include "../headers/get_next_line.h"
 
-# include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-// open
-# include <fcntl.h>
-// events and masks
-# include <X11/X.h>
-# include <X11/keysym.h>
-//se for utilizar strerror()
-# include <string.h>
-//se for usar perror() 
-# include <stdio.h>
+void	gnl_strjoin(char **next, char *buffer)
+{
+	char	*aux;
 
-#endif
+	aux = ft_strjoin(*next, buffer);
+	ft_clean(next);
+	*next = aux;
+}
+
+void	ft_clean(char **str)
+{
+	if (str == NULL && !(*str))
+		return ;
+	if (*str)
+		free(*str);
+	*str = NULL;
+}

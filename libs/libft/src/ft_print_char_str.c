@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   ft_print_char_str.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:05 by marcarva         ###   ########.fr       */
+/*   Created: 2022/10/24 23:56:05 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/03 15:04:28 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#include "../headers/ft_printf.h"
 
-# include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-// open
-# include <fcntl.h>
-// events and masks
-# include <X11/X.h>
-# include <X11/keysym.h>
-//se for utilizar strerror()
-# include <string.h>
-//se for usar perror() 
-# include <stdio.h>
+int	ft_print_char(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-#endif
+int	ft_print_str(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (write(1, "(null)", 6));
+	else
+	{
+		while (*(s + i))
+		{
+			write(1, (s + i), 1);
+			i++;
+		}
+		return (i);
+	}
+}

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:05 by marcarva         ###   ########.fr       */
+/*   Created: 2022/09/08 16:24:27 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/03 15:09:25 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#include "../headers/libft.h"
 
-# include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-// open
-# include <fcntl.h>
-// events and masks
-# include <X11/X.h>
-# include <X11/keysym.h>
-//se for utilizar strerror()
-# include <string.h>
-//se for usar perror() 
-# include <stdio.h>
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*destination;
+	unsigned char	*source;
+	size_t			i;
 
-#endif
+	destination = (unsigned char *)dest;
+	source = (unsigned char *)src;
+	i = 0;
+	if ((dest == NULL) && (src == NULL))
+		return (dest);
+	while (i < n)
+	{
+		destination[i] = source[i];
+		i++;
+	}
+	return (dest);
+}

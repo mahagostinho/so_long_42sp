@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:05 by marcarva         ###   ########.fr       */
+/*   Created: 2022/09/06 18:22:27 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/03 15:10:20 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#include "../headers/libft.h"
 
-# include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-// open
-# include <fcntl.h>
-// events and masks
-# include <X11/X.h>
-# include <X11/keysym.h>
-//se for utilizar strerror()
-# include <string.h>
-//se for usar perror() 
-# include <stdio.h>
+char	*ft_strdup(const char *s)
+{
+	char	*ptr;
+	size_t	i;
 
-#endif
+	ptr = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	i = 0;
+	if (ptr == NULL)
+		return (NULL);
+	while (*(s + i))
+	{
+		*(ptr + i) = *(s + i);
+		i++;
+	}
+	*(ptr + i) = '\0';
+	return (ptr);
+}
