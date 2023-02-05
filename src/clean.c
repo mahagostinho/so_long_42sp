@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:33:53 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:24:28 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/05 17:55:13 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void clean_malloc(void **ptr)
 	}
 }
 
-
 void clean_mlx(t_game *sl)
 {
 	if (sl->mlx.win != NULL)
@@ -73,7 +72,7 @@ void clean_mlx(t_game *sl)
 	sl->mlx.mlx = NULL;
 }
 */
-void clean_game(t_game *game)
+void	free_game(t_game *game)
 {
 	free_map(game);
 	/*
