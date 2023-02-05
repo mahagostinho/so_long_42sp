@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:01 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:26:39 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/04 23:01:04 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,5 @@ void	parse_map(char *map_file, t_game *game)
 	free(game->map.map_grid[3]);
 	free(game->map.map_grid[4]);
 	*/
-	check_map(game)
+	//check_map(game)
 }
