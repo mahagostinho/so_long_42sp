@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 10:06:43 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/04 22:57:36 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:11:18 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ typedef struct s_game
 
 /* ***************** FUNCTIONS ************************** */
 void	check_input(int argc, char *map_file);
+int		check_map_format(char *map_format);
 void	error_message(char *message);
+void	map_error(char *message, t_game *game);
+void	game_error(char *message, t_game *game);
 void	free_ptr_ptr(char **ptr);
 void	free_map(t_game *game);
-void	map_error(char *message, t_game *game);
-int		game_error(char *message, t_game *game);
-
-int		check_map_format(char *map_format);
-void	parse_map(char *map_file, t_game *game);
+void	free_game(t_game *game);
 void	init_map_variables(t_game *game);
 void	read_map(char *map_file, t_game *game);
-
-void	clean_game(t_game *game);
-//void	check_map(t_game *game);
+void	check_map_characters(t_game *game);
+void	check_map_line(char *map_line, t_game *game, int i);
+void	check_map(t_game *game);
+void	parse_map(char *map_file, t_game *game);
 #endif
