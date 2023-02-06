@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 17:33:53 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/05 17:55:13 by marcarva         ###   ########.fr       */
+/*   Created: 2023/02/06 15:30:25 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/06 18:37:39 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,48 +40,43 @@ void	free_map(t_game *game)
 	}
 }
 
-/*
-void clean_malloc(void **ptr)
+void clean_mlx(t_game *game)
 {
-	int i;
-
-	i = 0;
-	if (ptr == NULL && !(*ptr))
-		return;
-	else
+	if (game->img.img_ptr != NULL)
 	{
-		while (ptr[i])
-		{
-			free(ptr[i]);
-			ptr[i] = NULL;
-			i++;
-		}
-		free(ptr);
-		ptr = NULL;
+		mlx_destroy_image(game->mlx.mlx_ptr, game->img.img_ptr);
+		game->img.img_ptr = NULL;
+	}
+	if (game->mlx.win_ptr != NULL)
+	{
+		mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.win_ptr);
+		game->mlx.win_ptr = NULL;
+	}
+	if (game->mlx.mlx_ptr != NULL)
+	{
+		mlx_destroy_display(game->mlx.mlx_ptr);
+		free(game->mlx.mlx_ptr);
+		game->mlx.mlx_ptr = NULL;
 	}
 }
 
-void clean_mlx(t_game *sl)
+void	clean_img(t_game *game)
 {
-	if (sl->mlx.win != NULL)
-		mlx_destroy_window(sl->mlx.mlx, sl->mlx.win);
-	sl->mlx.win = NULL;
-	if (sl->mlx.mlx != NULL)
-		mlx_destroy_display(sl->mlx.mlx);
-	free(sl->mlx.mlx);
-	sl->mlx.mlx = NULL;
+	if (game->sprites.collectible.img_ptr != NULL)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->sprites.collectible.img_ptr);
+	if (game->sprites.exit.img_ptr != NULL)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->sprites.exit.img_ptr);
+	if (game->sprites.floor.img_ptr != NULL)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->sprites.floor.img_ptr);
+	if (game->sprites.wall.img_ptr != NULL)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->sprites.wall.img_ptr);
+	if (game->sprites.player.img_ptr != NULL)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->sprites.player.img_ptr);
 }
-*/
+
 void	free_game(t_game *game)
 {
 	free_map(game);
-	/*
-	if (game->items != NULL)
-		clean_malloc((void **)game->items);
-	if (game->mlx.mlx != NULL)
-	{
-		clean_imgs(game);
-		clean_mlx(game);
-	}
-	*/
+	clean_img(game);
+	clean_mlx(game);
 }

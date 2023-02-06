@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:01 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/05 19:27:07 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:26:17 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	read_map(char *map_file, t_game *game)
 		}
 		free_ptr_ptr(&aux);
 	}
-	ft_printf("%s", game->map.map_vector); //apagar depois ******************
 	free_ptr_ptr(&aux);
 	close(fd);
 }
