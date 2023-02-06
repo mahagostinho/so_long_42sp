@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 10:06:43 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/05 19:11:18 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:06:57 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@
 # define EXIT 'E'
 # define PLAYER 'P'
 # define VALID_CHAR '01CEP'
+# define TILE_SIZE 32
+/* KEYS */
+# define KEY_W				119
+# define KEY_A				97
+# define KEY_S				115
+# define KEY_D				100
+
+/* MOVES */
+# define FRONT				1
+# define LEFT				2
+# define RIGHT				3
+# define BACK				4
+/* SPRITE'S PATH */
+# define WALL_PATH			"assets/sprites/wall.xpm"
+# define FLOOR_PATH			"assets/sprites/floor.xpm"
+# define COLLECTIBLE_PATH	"assets/sprites/collectible.xpm"
+# define PLAYER_PATH		"assets/sprites/player.xpm"
+# define EXIT_PATH			"assets/sprites/exit.xpm"
 
 /* **************** STRUCTS ************************** */
 typedef struct s_map
@@ -37,9 +55,40 @@ typedef struct s_map
 	int		total_collectible;
 }	t_map;
 
+typedef struct s_img
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
+typedef struct s_sprites
+{
+	t_img	wall;
+	t_img	floor;
+	t_img	collectible;
+	t_img	player;
+	t_img	exit;
+}	t_sprites;
+
+typedef struct s_mlx
+{
+	int		window_width;
+	int		window_height;
+	void	*mlx_ptr;
+	void	*win_ptr;
+}	t_mlx;
+
 typedef struct s_game
 {
-	t_map	map;
+	t_map		map;
+	t_mlx		mlx;
+	t_img		img;
+	t_sprites	sprites;
 }	t_game;
 
 /* ***************** FUNCTIONS ************************** */
@@ -57,4 +106,11 @@ void	check_map_characters(t_game *game);
 void	check_map_line(char *map_line, t_game *game, int i);
 void	check_map(t_game *game);
 void	parse_map(char *map_file, t_game *game);
+void    create_window(t_game *game);
+void	convert_sprite_to_img(t_game *game, t_img *sprite, char *path);
+void	load_sprites(t_game *game);
+int		render_game(t_game *game);
+void	put_sprite(t_game *game, int i, int j);
+void	mlx_hooks(t_game *game);
+void	game_init(t_game *game);
 #endif
