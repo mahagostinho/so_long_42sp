@@ -6,27 +6,37 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:01 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/06 16:26:17 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:07:06 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-void	check_map(t_game *game)
+void	parse_map(char *map_file, t_game *game)
 {
-	int	i;
+	init_map_variables(game);
+	read_map(map_file, game);
+	game->map.map_grid = ft_split(game->map.map_vector, '\n');
+	if (game->map.map_grid == NULL)
+		game_error("Error to create map matrix", game);
+	check_map(game);
+}
 
-	i = 0;
-	if (game->map.total_lines < 3)
-		map_error("Small map! Need more lines", game);
-	if (game->map.total_columns < 4)
-		map_error("Small map! Need more columns", game);
-	while (game->map.map_grid[i])
+void	init_map_variables(t_game *game)
+{
+	game->map.total_lines = 0;
+	game->map.total_columns = 0;
+	game->moves = 0;
+	game->map.map_vector = ft_strdup("");
+	if (game->map.map_vector == NULL)
 	{
-		check_map_line(game->map.map_grid[i], game, i);
-		i++;
+		free(game->map.map_vector);
+		error_message("Memory allocation error!");
 	}
-	check_map_characters(game);
+	game->map.map_grid = NULL;
+	game->map.total_collectible = 0;
+	game->map.total_exit = 0;
+	game->map.total_player = 0;
 }
 
 void	read_map(char *map_file, t_game *game)
@@ -57,28 +67,19 @@ void	read_map(char *map_file, t_game *game)
 	close(fd);
 }
 
-void	init_map_variables(t_game *game)
+void	check_map(t_game *game)
 {
-	game->map.total_lines = 0;
-	game->map.total_columns = 0;
-	game->map.map_vector = ft_strdup("");
-	if (game->map.map_vector == NULL)
-	{
-		free(game->map.map_vector);
-		error_message("Memory allocation error!");
-	}
-	game->map.map_grid = NULL;
-	game->map.total_collectible = 0;
-	game->map.total_exit = 0;
-	game->map.total_player = 0;
-}
+	int	i;
 
-void	parse_map(char *map_file, t_game *game)
-{
-	init_map_variables(game);
-	read_map(map_file, game);
-	game->map.map_grid = ft_split(game->map.map_vector, '\n');
-	if (game->map.map_grid == NULL)
-		game_error("Error to create map matrix", game);
-	check_map(game);
+	i = 0;
+	if (game->map.total_lines < 3)
+		map_error("Small map! Need more lines", game);
+	if (game->map.total_columns < 4)
+		map_error("Small map! Need more columns", game);
+	while (game->map.map_grid[i])
+	{
+		check_map_line(game->map.map_grid[i], game, i);
+		i++;
+	}
+	check_map_characters(game);
 }
