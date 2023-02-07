@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:58:33 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/06 15:32:04 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:40:01 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	load_sprites(t_game *game)
 	convert_sprite_to_img(game, &game->sprites.wall, WALL_PATH);
 }
 
-int		render_game(t_game *game)
+int	render_game(t_game *game)
 {
 	int	i;
 	int	j;
@@ -60,6 +60,11 @@ int		render_game(t_game *game)
 		{
 			put_sprite(game, i, j);
 			j++;
+			if (game->map.map_grid[i][j] == PLAYER)
+			{
+				game->player.i = i;
+				game->player.j = j;
+			}
 		}
 		i++;
 	}
