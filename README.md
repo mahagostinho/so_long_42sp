@@ -1,4 +1,4 @@
-<h1 align="center"> so_long </h1>
+<h1> so_long </h1>
 
 <p align="center">:information_source: A small 2D game made using the MiniLibX Graphics Library 
 
