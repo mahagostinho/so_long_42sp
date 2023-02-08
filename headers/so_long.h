@@ -6,64 +6,18 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 10:06:43 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 14:51:04 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:12:57 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-/* **************** HEADERS ************************** */
-# include "libs.h"
-
-/* **************** MACROS *************************** */
-/* MAP */
-# define SPACE '0'
-# define WALL '1'
-# define COLLECTIBLE 'C'
-# define EXIT 'E'
-# define PLAYER 'P'
-# define TILE_SIZE 32
-
-/* SPRITE'S PATH */
-# define WALL_PATH			"assets/sprites/wall.xpm"
-# define FLOOR_PATH			"assets/sprites/floor.xpm"
-# define COLLECTIBLE_PATH	"assets/sprites/collectible.xpm"
-# define PLAYER_PATH		"assets/sprites/player.xpm"
-# define EXIT_PATH			"assets/sprites/exit.xpm"
-
-/* **************** STRUCTS ************************** */
-
-typedef struct s_map
-{
-	char	**map_grid;
-	char	*map_vector;
-	int		total_lines;
-	size_t	total_columns;
-	int		total_exit;
-	int		total_player;
-	int		total_collectible;
-}	t_map;
-
-typedef struct s_img
-{
-	void	*img_ptr;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		width;
-	int		height;
-}	t_img;
-
-typedef struct s_sprites
-{
-	t_img	wall;
-	t_img	floor;
-	t_img	collectible;
-	t_img	player;
-	t_img	exit;
-}	t_sprites;
+# include "../libs/minilibx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include "map.h"
+# include "sprites.h"
 
 typedef struct s_mlx
 {
@@ -72,12 +26,6 @@ typedef struct s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 }	t_mlx;
-
-typedef struct s_position
-{
-	int	i;
-	int	j;
-}	t_position;
 
 typedef struct s_game
 {
@@ -89,33 +37,4 @@ typedef struct s_game
 	t_position	player;
 }	t_game;
 
-/* ***************** FUNCTIONS ************************** */
-
-void	check_cli_input(int argc, char *map_file);
-int		check_map_format(char *map_format);
-void	error_message(char *message);
-void	map_error(char *message, t_game *game);
-void	game_error(char *message, t_game *game);
-void	free_ptr_ptr(char **ptr);
-void	free_map(t_game *game);
-void	free_game(t_game *game);
-void	init_map_variables(t_game *game);
-void	read_map(char *map_file, t_game *game);
-void	check_map_characters(t_game *game);
-void	check_map_line(char *map_line, t_game *game, int i);
-void	is_wall(char component, t_game *game);
-void	is_character(char component, t_game *game);
-void	check_map(t_game *game);
-void	parse_map(char *map_file, t_game *game);
-void	create_window(t_game *game);
-void	convert_sprite_to_img(t_game *game, t_img *sprite, char *path);
-void	load_sprites(t_game *game);
-int		render_game(t_game *game);
-void	put_sprite(t_game *game, int i, int j);
-int		close_game(t_game *game);
-int		handle_keypress(int keysym, t_game *game);
-void	mlx_hooks(t_game *game);
-void	game_init(t_game *game);
-void	move_player(t_game *game, int new_i, int new_j);
-void	player_wins(t_game *game);
 #endif
