@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1-input.c                                          :+:      :+:    :+:   */
+/*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:14 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/05 18:05:45 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:47:42 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	check_map_format(char *map_format)
-{
-	if (ft_strncmp(map_format, ".ber", 4) == 0)
-		return (0);
-	return (1);
-}
-
-void	check_input(int argc, char *map_file)
+void	check_cli_input(int argc, char *map_file)
 {
 	int	file_descriptor;
 
@@ -35,4 +28,11 @@ void	check_input(int argc, char *map_file)
 		close(file_descriptor);
 		error_message("Wrong file path/name or non-existent file.");
 	}
+}
+
+int	check_map_format(char *map_format)
+{
+	if (ft_strncmp(map_format, ".ber", 4) == 0)
+		return (0);
+	return (1);
 }

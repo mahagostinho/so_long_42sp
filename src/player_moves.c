@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   7-moves.c                                          :+:      :+:    :+:   */
+/*   player_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:48:55 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/07 16:40:06 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:54:45 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
-
-void	player_wins(t_game *game)
-{
-	ft_printf("Movements: %d\nCongrats! You won!\n", ++game->moves);
-	free_game(game);
-	exit(EXIT_SUCCESS);
-}
 
 void	move_player(t_game *game, int new_i, int new_j)
 {

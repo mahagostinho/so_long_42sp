@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   4-game_init.c                                      :+:      :+:    :+:   */
+/*   game_startup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:58:33 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/07 16:40:01 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:50:45 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,28 +45,4 @@ void	load_sprites(t_game *game)
 	convert_sprite_to_img(game, &game->sprites.floor, FLOOR_PATH);
 	convert_sprite_to_img(game, &game->sprites.player, PLAYER_PATH);
 	convert_sprite_to_img(game, &game->sprites.wall, WALL_PATH);
-}
-
-int	render_game(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < game->map.total_lines)
-	{
-		j = 0;
-		while (j < (int)game->map.total_columns)
-		{
-			put_sprite(game, i, j);
-			j++;
-			if (game->map.map_grid[i][j] == PLAYER)
-			{
-				game->player.i = i;
-				game->player.j = j;
-			}
-		}
-		i++;
-	}
-	return (0);
 }

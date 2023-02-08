@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   6-hooks.c                                          :+:      :+:    :+:   */
+/*   hooks_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:57:10 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/07 15:48:00 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:39:07 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	close_game(t_game *game)
+void	mlx_hooks(t_game *game)
 {
-	free_game(game);
-	ft_printf("Closed\n");
-	exit(EXIT_FAILURE);
+	mlx_hook(game->mlx.win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
+	mlx_hook(game->mlx.win_ptr, DestroyNotify, ButtonPressMask,
+		&close_game, game);
+	mlx_loop_hook(game->mlx.mlx_ptr, &render_game, game);
 }
 
 int	handle_keypress(int keysym, t_game *game)
@@ -34,10 +35,16 @@ int	handle_keypress(int keysym, t_game *game)
 	return (0);
 }
 
-void	mlx_hooks(t_game *game)
+int	close_game(t_game *game)
 {
-	mlx_hook(game->mlx.win_ptr, KeyPress, KeyPressMask, &handle_keypress, game);
-	mlx_hook(game->mlx.win_ptr, DestroyNotify, ButtonPressMask,
-		&close_game, game);
-	mlx_loop_hook(game->mlx.mlx_ptr, &render_game, game);
+	free_game(game);
+	ft_printf("Closed\n");
+	exit(EXIT_FAILURE);
+}
+
+void	player_wins(t_game *game)
+{
+	ft_printf("Movements: %d\nCongrats! You won!\n", ++game->moves);
+	free_game(game);
+	exit(EXIT_SUCCESS);
 }
