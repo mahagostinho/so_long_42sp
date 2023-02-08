@@ -6,11 +6,11 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:57:10 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 14:39:07 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:35:13 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/render.h"
 
 void	mlx_hooks(t_game *game)
 {
