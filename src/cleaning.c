@@ -6,19 +6,17 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:30:25 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 12:55:33 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:12:57 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/cleaning.h"
 
-void	free_ptr_ptr(char **ptr)
+void	free_game(t_game *game)
 {
-	if (ptr == NULL && !(*ptr))
-		return ;
-	if (*ptr)
-		free(*ptr);
-	*ptr = NULL;
+	free_map(game);
+	clean_img(game);
+	clean_mlx(game);
 }
 
 void	free_map(t_game *game)
@@ -38,6 +36,15 @@ void	free_map(t_game *game)
 		free(game->map.map_grid);
 		game->map.map_grid = NULL;
 	}
+}
+
+void	free_ptr_ptr(char **ptr)
+{
+	if (ptr == NULL && !(*ptr))
+		return ;
+	if (*ptr)
+		free(*ptr);
+	*ptr = NULL;
 }
 
 void	clean_mlx(t_game *game)
@@ -72,11 +79,4 @@ void	clean_img(t_game *game)
 		mlx_destroy_image(game->mlx.mlx_ptr, game->sprites.wall.img_ptr);
 	if (game->sprites.player.img_ptr != NULL)
 		mlx_destroy_image(game->mlx.mlx_ptr, game->sprites.player.img_ptr);
-}
-
-void	free_game(t_game *game)
-{
-	free_map(game);
-	clean_img(game);
-	clean_mlx(game);
 }
