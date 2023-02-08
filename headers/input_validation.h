@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   input_validation.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 10:06:43 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 18:12:57 by marcarva         ###   ########.fr       */
+/*   Created: 2023/02/08 16:20:49 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/08 18:34:38 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef INPUT_VALIDATION_H
+# define INPUT_VALIDATION_H
 
-# include "../libs/minilibx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include "map.h"
-# include "sprites.h"
+# include "../libs/libft/headers/libft.h"
+# include "error_handling.h"
+# include <fcntl.h>
 
-typedef struct s_mlx
-{
-	int		window_width;
-	int		window_height;
-	void	*mlx_ptr;
-	void	*win_ptr;
-}	t_mlx;
-
-typedef struct s_game
-{
-	t_map		map;
-	t_mlx		mlx;
-	t_img		img;
-	t_sprites	sprites;
-	int			moves;
-	t_position	player;
-}	t_game;
+void	check_cli_input(int argc, char *map_file);
+int		check_map_format(char *map_format);
 
 #endif

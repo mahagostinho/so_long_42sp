@@ -6,11 +6,11 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:14 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 12:47:42 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:23:06 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/input_validation.h"
 
 void	check_cli_input(int argc, char *map_file)
 {

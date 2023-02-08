@@ -6,11 +6,11 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:48:55 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 12:54:45 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:35:35 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/render.h"
 
 void	move_player(t_game *game, int new_i, int new_j)
 {

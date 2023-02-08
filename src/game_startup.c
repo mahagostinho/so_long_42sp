@@ -6,11 +6,13 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:58:33 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 12:50:45 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:12:21 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/game_startup.h"
+#include "../headers/sprite_manipulation.h"
+#include "../headers/render.h"
 
 void	game_init(t_game *game)
 {

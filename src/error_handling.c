@@ -6,11 +6,11 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:27 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 12:52:48 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:05:30 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/error_handling.h"
 
 void	error_message(char *message)
 {

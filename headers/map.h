@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 10:06:43 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 18:12:57 by marcarva         ###   ########.fr       */
+/*   Created: 2023/02/08 16:50:37 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/08 18:39:42 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef MAP_H
+# define MAP_H
 
-# include "../libs/minilibx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include "map.h"
-# include "sprites.h"
+# include <stdlib.h>
 
-typedef struct s_mlx
+# define SPACE '0'
+# define WALL '1'
+# define COLLECTIBLE 'C'
+# define EXIT 'E'
+# define PLAYER 'P'
+# define TILE_SIZE 32
+
+typedef struct s_map
 {
-	int		window_width;
-	int		window_height;
-	void	*mlx_ptr;
-	void	*win_ptr;
-}	t_mlx;
+	char	**map_grid;
+	char	*map_vector;
+	int		total_lines;
+	size_t	total_columns;
+	int		total_exit;
+	int		total_player;
+	int		total_collectible;
+}	t_map;
 
-typedef struct s_game
+typedef struct s_position
 {
-	t_map		map;
-	t_mlx		mlx;
-	t_img		img;
-	t_sprites	sprites;
-	int			moves;
-	t_position	player;
-}	t_game;
+	int	i;
+	int	j;
+}	t_position;
 
 #endif

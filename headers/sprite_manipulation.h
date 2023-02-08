@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   sprite_manipulation.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:20:22 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/07 16:46:43 by marcarva         ###   ########.fr       */
+/*   Created: 2023/02/08 17:52:14 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/08 18:15:11 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBS_H
-# define LIBS_H
+#ifndef SPRITE_MANIPULATION_H
+# define SPRITE_MANIPULATION_H
 
 # include "../libs/libft/headers/libft.h"
-# include "../libs/minilibx/mlx.h"
-# include <fcntl.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
+# include "so_long.h"
+# include "error_handling.h"
+
+void	load_sprites(t_game *game);
+void	convert_sprite_to_img(t_game *game, t_img *sprite, char *path);
+void	put_sprite(t_game *game, int i, int j);
 
 #endif

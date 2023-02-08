@@ -6,11 +6,11 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:49:09 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 12:46:39 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:01:33 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/sprite_manipulation.h"
 
 void	convert_sprite_to_img(t_game *game, t_img *sprite, char *path)
 {
