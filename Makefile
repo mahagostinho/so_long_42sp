@@ -20,8 +20,8 @@ OBJS_PATH = ./objs
 HEADER = ./headers
 
 # Files
-SRCS_FILES = so_long.c 0-error_functions.c 1-input.c 2-map.c 3-check_map.c 4-game_init.c 5-sprites.c \
-			6-hooks.c 7-moves.c 8-clean.c
+SRCS_FILES = so_long.c input_validation.c map_validation.c map_validation_utils.c error_handling.c \
+	cleaning.c game_startup.c rendering.c sprites_manipulation.c player_moves.c hooks_management.c \
 
 # all files .c with the path
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES)) 
@@ -35,7 +35,7 @@ DEBUG = -g
 CFLAGS = -Wall -Wextra -Werror $(DEBUG)
 GNL_FLAGS =	-D BUFFER_SIZE=10
 LIB_FLAGS = -lft -lmlx -lXext -lX11
-VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck
 
 # Clean
 RM 		= rm -f
@@ -45,7 +45,7 @@ RM_DIR	= rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(OBJS) -L$(LIBFT_PATH) -L$(MLX_PATH) $(LIB_FLAGS) -o $(NAME)
+	@$(CC) $(OBJS) -L$(LIBFT_PATH) -L$(MLX_PATH) $(LIB_FLAGS) -o $(NAME)
 
 # gerar os arquivos .o
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
@@ -61,7 +61,7 @@ $(MLX):
 	@echo "libmlx.a created"
 
 valgrind: $(NAME)
-	$(VALGRIND) $(NAME) $(MAP)
+	$(VALGRIND) ./$(NAME) $(MAP)
 
 clean:
 	@$(RM_DIR) $(OBJS_PATH)
