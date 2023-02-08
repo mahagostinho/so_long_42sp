@@ -6,11 +6,11 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:21:19 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 12:48:43 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:17:26 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../headers/map_validation.h"
 
 void	check_map_characters(t_game *game)
 {
