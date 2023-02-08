@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:01 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 17:02:36 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:53:53 by marcella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	check_map(t_game *game)
 	i = 0;
 	if (game->map.total_lines < 3)
 		map_error("Small map! Need more lines", game);
-	if (game->map.total_columns < 4)
+	if (game->map.total_columns < 3)
 		map_error("Small map! Need more columns", game);
 	while (game->map.map_grid[i])
 	{
