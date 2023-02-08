@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 17:00:48 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 14:40:08 by marcarva         ###   ########.fr       */
+/*   Created: 2023/02/04 17:00:27 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/08 12:52:48 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h" 
+#include "../headers/so_long.h"
 
-int	main(int argc, char **argv)
+void	error_message(char *message)
 {
-	t_game	game;
+	ft_printf("Error\n%s\n", message);
+	exit(EXIT_FAILURE);
+}
 
-	check_cli_input(argc, argv[1]);
-	parse_map(argv[1], &game);
-	game_init(&game);
-	mlx_hooks(&game);
-	mlx_loop(game.mlx.mlx_ptr);
+void	map_error(char *message, t_game *game)
+{
+	free_map(game);
+	ft_printf("Error\n%s\n", message);
+	exit(EXIT_FAILURE);
+}
+
+void	game_error(char *message, t_game *game)
+{
+	ft_printf("Error\n%s\n", message);
+	free_game(game);
+	exit(EXIT_FAILURE);
 }

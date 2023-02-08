@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 17:00:48 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 14:40:08 by marcarva         ###   ########.fr       */
+/*   Created: 2023/02/08 12:22:25 by marcarva          #+#    #+#             */
+/*   Updated: 2023/02/08 12:49:46 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h" 
+#include "../headers/so_long.h"
 
-int	main(int argc, char **argv)
+int	render_game(t_game *game)
 {
-	t_game	game;
+	int	i;
+	int	j;
 
-	check_cli_input(argc, argv[1]);
-	parse_map(argv[1], &game);
-	game_init(&game);
-	mlx_hooks(&game);
-	mlx_loop(game.mlx.mlx_ptr);
+	i = 0;
+	while (i < game->map.total_lines)
+	{
+		j = 0;
+		while (j < (int)game->map.total_columns)
+		{
+			put_sprite(game, i, j);
+			j++;
+			if (game->map.map_grid[i][j] == PLAYER)
+			{
+				game->player.i = i;
+				game->player.j = j;
+			}
+		}
+		i++;
+	}
+	return (0);
 }
