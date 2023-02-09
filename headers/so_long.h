@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 10:06:43 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 18:12:57 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/09 00:52:47 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <X11/keysym.h>
 # include "map.h"
 # include "sprites.h"
+
+typedef struct s_copy
+{
+	char		**map;
+	t_position	player;
+}	t_copy;
 
 typedef struct s_mlx
 {

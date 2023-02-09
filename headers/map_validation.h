@@ -6,7 +6,7 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 16:31:06 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 18:39:33 by marcarva         ###   ########.fr       */
+/*   Updated: 2023/02/09 01:45:28 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ void	check_map_characters(t_game *game);
 void	check_map_line(char *map_line, t_game *game, int i);
 void	is_wall(char component, t_game *game);
 void	is_character(char component, t_game *game);
+int		check_valid_path(t_game *game);
+void	free_copy(t_copy *copy);
 
 #endif

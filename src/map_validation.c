@@ -6,20 +6,30 @@
 /*   By: marcarva <marcarva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:00:01 by marcarva          #+#    #+#             */
-/*   Updated: 2023/02/08 19:53:53 by marcella         ###   ########.fr       */
+/*   Updated: 2023/02/09 02:16:31 by marcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/map_validation.h"
+#include "../headers/path_validation.h"
 
 void	parse_map(char *map_file, t_game *game)
 {
+	int	is_valid;
+
+	is_valid = 0;
 	init_map_variables(game);
 	read_map(map_file, game);
 	game->map.map_grid = ft_split(game->map.map_vector, '\n');
 	if (game->map.map_grid == NULL)
 		game_error("Error to create map matrix", game);
 	check_map(game);
+	is_valid = check_valid_path(game);
+	if (is_valid == 1)
+	{
+		free_map(game);
+		error_message("");
+	}
 }
 
 void	init_map_variables(t_game *game)

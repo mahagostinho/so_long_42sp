@@ -22,6 +22,7 @@ HEADER = ./headers
 # Files
 SRCS_FILES = so_long.c input_validation.c map_validation.c map_validation_utils.c error_handling.c \
 	cleaning.c game_startup.c rendering.c sprites_manipulation.c player_moves.c hooks_management.c \
+	path_validation.c path_validation_utils.c
 
 # all files .c with the path
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES)) 
